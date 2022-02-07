@@ -86,13 +86,33 @@ for ($i = 0; $i < count($array); $i++) {
     }
     echo "Count: " . count($array) . " - Position: " . $i . "<br>";
 }
+
+$edades = array('carlos' => 25, "jose" => 18);
+
+foreach ($edades as $key => $value) {
+}
 //ciclo for
 for ($i = 0; $i < strlen($message); $i++) {
 }
 
 
+//url
+$url = 'recibir.php?tipo_usuario=nuevo&navegador=chrome';
+
+//método get
+echo $_GET['tipo_usuario'];
+
+//método post
+echo $_POST['usuario'];
+
+//valida formulario
+
+if (isset($_POST['usuario'])) {//Determine if a variable is declared and is different than NULL
+}
 
 
+include('asd.php');//muestra en contenido aunque tenga algon error
+require('asd.php');//no carga el contenido si existe algin error 
 function contarVocales($cadena)
 {
     $vocalesEncontradas = 0;
