@@ -107,12 +107,93 @@ echo $_POST['usuario'];
 
 //valida formulario
 
-if (isset($_POST['usuario'])) {//Determine if a variable is declared and is different than NULL
+if (isset($_POST['usuario'])) { //Determine if a variable is declared and is different than NULL
 }
 
 
-include('asd.php');//muestra en contenido aunque tenga algon error
-require('asd.php');//no carga el contenido si existe algin error 
+include('asd.php'); //muestra en contenido aunque tenga algon error
+require('asd.php'); //no carga el contenido si existe algin error 
+
+
+//dentro de la vista se hace un require y me llama a la function
+include('operaciones.php');
+multiplicar();
+
+//esto es otro archivo php
+function multiplicar()
+{
+    if (isset($_POST['num1'])) {
+        return; #suma;
+    }
+}
+
+//Fechas
+/**
+ * d - día
+ * m - mes
+ * a - año
+ * l - dia del mes
+ * 
+ * h - horas 1 a 12 formato
+ * i - minutos
+ * s - segundos
+ * a - pm-am
+ */
+echo date('h:i:sa');
+echo date('d/m/y');
+
+//connection
+$servidor = 'localhost';
+$nombreUsuario = "root";
+$password = '123';
+$db = 'msq';
+$conexion = new mysqli($servidor, $nombreUsuario, $password/**, $db*/);
+if ($conexion->connect_error) {
+    die('conexión fallida: ' . $conexion->connect_error);
+}
+
+echo ' se conecto';
+
+$sql ="CREATE DATABASE listUsers";
+if(!$conexion->query($sql)){
+    die('Error al crear la DB:'.$conexion->error);
+}
+echo "base de datos crada correctamente...";
+
+$sql = "CREATE TABLE uno(id INT(11) AUTO_INCREMENT PRIMARY KEY;
+texto varchar(100),
+timestamp TIMESTAMP)";
+if(!$conexion->query($sql)){
+    die('Error al crear la tabla:'.$conexion->error);
+}
+
+$sql= "SELECT * FROM uno";
+$resultado = $conexion->query($sql);
+if($resultado->num_rows>0){
+while ($row = $resultado->fetch_assoc()) {
+    echo $row['texto'];
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function contarVocales($cadena)
 {
     $vocalesEncontradas = 0;
